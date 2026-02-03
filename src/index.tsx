@@ -1,6 +1,5 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/cloudflare-workers'
 import { Layout, PageHeader } from './components/layout'
 import { HomePage } from './pages/home'
 import { PrePrimaryPage, PrimaryPage, MiddleSchoolPage } from './pages/academics'
@@ -18,44 +17,44 @@ const app = new Hono()
 // Enable CORS for API routes
 app.use('/api/*', cors())
 
-// Serve static files
-app.use('/static/*', serveStatic({ root: './public' }))
+// Serve static files are handled by the platform (Vercel/CF)
+// or we can add a middleware here if needed for local dev
 
 // API route for admission inquiry
 app.post('/api/admission-inquiry', async (c) => {
-  const data = await c.req.json()
-  console.log('Admission Inquiry:', data)
-  
-  // In production, you would send email or save to database
-  return c.json({ 
-    success: true, 
-    message: 'Thank you! Our admissions team will contact you within 24 hours.'
-  })
+    const data = await c.req.json()
+    console.log('Admission Inquiry:', data)
+
+    // In production, you would send email or save to database
+    return c.json({
+        success: true,
+        message: 'Thank you! Our admissions team will contact you within 24 hours.'
+    })
 })
 
 // Home Page
 app.get('/', (c) => {
-  return c.html(Layout(HomePage(), 'Home', 'home'))
+    return c.html(Layout(HomePage(), 'Home', 'home'))
 })
 
 // Academic Pages
 app.get('/academics/pre-primary', (c) => {
-  return c.html(Layout(PrePrimaryPage(), 'Pre-Primary Education', 'academics-pre-primary'))
+    return c.html(Layout(PrePrimaryPage(), 'Pre-Primary Education', 'academics-pre-primary'))
 })
 
 app.get('/academics/primary', (c) => {
-  return c.html(Layout(PrimaryPage(), 'Primary Education', 'academics-primary'))
+    return c.html(Layout(PrimaryPage(), 'Primary Education', 'academics-primary'))
 })
 
 app.get('/academics/middle', (c) => {
-  return c.html(Layout(MiddleSchoolPage(), 'Middle School Education', 'academics-middle'))
+    return c.html(Layout(MiddleSchoolPage(), 'Middle School Education', 'academics-middle'))
 })
 
 app.get('/academics/secondary', (c) => {
-  const content = `
+    const content = `
     ${PageHeader(
-        'Secondary & Senior Secondary Education', 
-        'Excellence Stage: Preparing students for board examinations, elite universities, and future success through academic rigor and innovation', 
+        'Secondary & Senior Secondary Education',
+        'Excellence Stage: Preparing students for board examinations, elite universities, and future success through academic rigor and innovation',
         '/static/images/secondary.png',
         'Secondary & Senior Secondary (Grades 9 - 12)'
     )}
@@ -241,78 +240,78 @@ app.get('/academics/secondary', (c) => {
         </div>
     </section>
   `;
-  return c.html(Layout(content, 'Secondary & Senior Secondary Education', 'academics-secondary'))
+    return c.html(Layout(content, 'Secondary & Senior Secondary Education', 'academics-secondary'))
 })
 
 // Remove the old /academics/senior-secondary route (merged with secondary)
 app.get('/academics/senior-secondary', (c) => {
-  // Redirect to the combined secondary page
-  return c.redirect('/academics/secondary', 301)
+    // Redirect to the combined secondary page
+    return c.redirect('/academics/secondary', 301)
 })
 
 // Facilities Page
 app.get('/facilities', (c) => {
-  return c.html(Layout(FacilitiesPage(), 'Facilities', 'facilities'))
+    return c.html(Layout(FacilitiesPage(), 'Facilities', 'facilities'))
 })
 
 // Innovation Hub Page
 app.get('/innovation', (c) => {
-  return c.html(Layout(InnovationPage(), 'Innovation Hub', 'innovation'))
+    return c.html(Layout(InnovationPage(), 'Innovation Hub', 'innovation'))
 })
 
 // About Page
 app.get('/about', (c) => {
-  return c.html(Layout(AboutPage(), 'About Us', 'about'))
+    return c.html(Layout(AboutPage(), 'About Us', 'about'))
 })
 
 // Contact Page
 app.get('/contact', (c) => {
-  return c.html(Layout(ContactPage(), 'Contact Us', 'contact'))
+    return c.html(Layout(ContactPage(), 'Contact Us', 'contact'))
 })
 
 // Mandatory Disclosure Page
 app.get('/mandatory-disclosure', (c) => {
-  return c.html(Layout(MandatoryDisclosurePage(), 'Mandatory Disclosure', 'mandatory-disclosure'))
+    return c.html(Layout(MandatoryDisclosurePage(), 'Mandatory Disclosure', 'mandatory-disclosure'))
 })
 
 // Admissions Page
 app.get('/admissions', (c) => {
-  return c.html(Layout(AdmissionsPage(), 'Admissions', 'admissions'))
+    return c.html(Layout(AdmissionsPage(), 'Admissions', 'admissions'))
 })
 
 // Gallery Page
 app.get('/gallery', (c) => {
-  return c.html(Layout(GalleryPage(), 'Campus Gallery', 'gallery'))
+    return c.html(Layout(GalleryPage(), 'Campus Gallery', 'gallery'))
 })
 
 // Sports & Clubs Page
 app.get('/sports-clubs', (c) => {
-  return c.html(Layout(SportsClubsPage(), 'Sports & Clubs', 'sports-clubs'))
+    return c.html(Layout(SportsClubsPage(), 'Sports & Clubs', 'sports-clubs'))
 })
 
 // Brochure Page
 app.get('/brochure', (c) => {
-  return c.html(Layout(BrochurePage(), 'Digital Brochure', 'brochure'))
+    return c.html(Layout(BrochurePage(), 'Digital Brochure', 'brochure'))
 })
 
 // Transport Page
 app.get('/transport', (c) => {
-  return c.html(Layout(TransportPage(), 'Transport Services', 'transport'))
+    return c.html(Layout(TransportPage(), 'Transport Services', 'transport'))
 })
 
 // Events & Celebrations Page
 app.get('/events', (c) => {
-  return c.html(Layout(EventsPage(), 'Events & Celebrations', 'events'))
+    return c.html(Layout(EventsPage(), 'Events & Celebrations', 'events'))
 })
 
 // Success Stories Page
 app.get('/success-stories', (c) => {
-  return c.html(Layout(SuccessStoriesPage(), 'Success Stories', 'success-stories'))
+    return c.html(Layout(SuccessStoriesPage(), 'Success Stories', 'success-stories'))
 })
 
 // Stanford Pathway Page
 app.get('/stanford-pathway', (c) => {
-  return c.html(Layout(StanfordPathwayPage(), 'Pathway to Stanford', 'stanford-pathway'))
+    return c.html(Layout(StanfordPathwayPage(), 'Pathway to Stanford', 'stanford-pathway'))
 })
 
 export default app
