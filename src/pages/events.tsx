@@ -6,7 +6,7 @@ export const EventsPage = () => {
     ${PageHeader(
         'Events & Celebrations',
         'Witness the vibrant life and professional journey at SNSCPHS',
-        '/static/images/SNS Academy Web/Events.webp',
+        '/static/images/pharmacy-events.jpg',
         'Events'
     )}
 

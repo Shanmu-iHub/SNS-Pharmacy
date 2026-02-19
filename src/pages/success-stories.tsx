@@ -6,7 +6,7 @@ export const SuccessStoriesPage = () => {
     ${PageHeader(
         'Success Stories',
         'Celebrating the professional breakthroughs of SNSCPHS graduates',
-        '/static/images/SNS Academy Web/Success.webp',
+        '/static/images/pharmacy-success.jpg',
         'Success Stories'
     )}
 

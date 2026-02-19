@@ -6,7 +6,7 @@ export const HomePage = () => {
     <section class="relative text-white py-24 lg:py-32 overflow-hidden">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="/static/images/hero.png" alt="SNS Academy Campus" class="w-full h-full object-cover">
+            <img src="/static/images/hero.png" alt="SNS Pharmacy Campus" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-black/10 to-transparent"></div>
         </div>
         
@@ -15,7 +15,7 @@ export const HomePage = () => {
                 <div>
                     <div class="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
                         <i class="fas fa-trophy text-yellow-400 mr-2"></i>
-                        <span class="text-sm font-semibold tracking-wide">India's First GenAI-Powered Design Thinking CBSE School (Patented)</span>
+                        <span class="text-sm font-semibold tracking-wide">India's First Design Thinking Pharmacy College</span>
                     </div>
                     
                     <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight font-display">
@@ -113,7 +113,7 @@ export const HomePage = () => {
         </div>
     </section>
 
-    <!-- Why SNS Academy -->
+    <!-- Why SNSCPHS -->
     <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
